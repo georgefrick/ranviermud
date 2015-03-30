@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+
 /**
  * Main file, use this to run the server:
  * node ranvier [options]
@@ -10,8 +10,6 @@
  *   --save Minutes between autosave
  *   --respawn Minutes between respawn
  */
-
-
 	// built-ins
 var net = require('net'),
 	util = require('util'),
@@ -40,18 +38,17 @@ var net = require('net'),
 
 	//storage of main game entities
 	var players,
-	rooms = new Rooms(),
-	items = new Items(),
-	npcs  = new Npcs(),
-	server,
+	    rooms = new Rooms(),
+	    items = new Items(),
+	    npcs  = new Npcs(),
+	    server,
+	    // Stuff for the server executable
+	    l10n,
+	    respawnint,
+	    saveint;
 
-	// Stuff for the server executable
-	l10n,
-	respawnint,
-	saveint;
-
-// cmdline options
-commander
+    // cmdline options
+    commander
 	.version('0.0.1') // todo: yank from package.json
 	.option('-s, --save [time]', 'Number of minutes between auto-save ticks [10]', 10)
 	.option('-r, --respawn [time]', 'Number of minutes between respawn tickets [20]', 20)
